@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dark Mode Designer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(30, 29, 29, 0.6);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      height: 12vh;
+      padding: 0 2vw;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      color: #d4c2a8;
+      font-size: 1.8rem;
+      font-family: 'Brush Script MT', cursive;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar .nav-links li {
+      margin-left: 2vw;
+    }
+
+    .navbar .nav-links li a {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #b0b0b0;
+      text-decoration: none;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .navbar .nav-links li a:hover {
+      color: #ffffff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #b0b0b0;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+    }
+
+    .intro {
+      background: linear-gradient(to right, #000000 15%, #808080 80%, #1e1d1d 100%);
+      margin-top: 0;
+      min-height: 98vh;
+      display: flex;
+      align-items: center;
+      /* border-radius: 40px; */
+      /* margin: 3vh 2vw; */
+    }
+
+    .container {
+      text-align: left;
+      color: white;
+      position: relative;
+      width: 100%;
+    }
+
+    .container img {
+      width: 600px;
+      max-height: 650px;
+      position: absolute;
+      top: 1.5vh;
+      left: 50vw;
+      right: 5vw;
+    }
+
+    .cont {
+      color: rgb(255, 233, 233);
+      font-size: 3.7rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      position: relative;
+      left: 5vw;
+      top: 12vh;
+      
+    }
+
+    /* 2 page started */
+    .about {
+        font-size: 60px;
+      margin-top: 10.5vh;
+      background-color: #ffffff;
+      min-height: 100vh;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 6vh 2vw;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .about-text {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 4em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #1e1e1e;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* 3 page started  */
+    /* Philosophy Section */
+    .philosophy {
+     border-radius: 50px;
+     margin:50px;
+      background-color: #000000;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6vh 2vw;
+      color: #ffffff;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Starry Background Effect */
+/* ...existing code... */
+.stars-layer-1,
+.stars-layer-2,
+.stars-layer-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.stars-layer-1 .star,
+.stars-layer-2 .star,
+.stars-layer-3 .star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.8;
+  animation: twinkleStar 2s infinite;
+}
+
+.stars-layer-2 .star {
+  opacity: 0.5;
+  width: 1.5px;
+  height: 1.5px;
+  animation-duration: 3s;
+}
+
+.stars-layer-3 .star {
+  opacity: 0.3;
+  width: 1px;
+  height: 1px;
+  animation-duration: 4s;
+}
+
+@keyframes twinkleStar {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+}
+/* ...existing code... */
+
+    .philosophy-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .philosophy-text {
+      max-width: 50%;
+    }
+
+    .philosophy-text h2 {
+      font-size: 6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .philosophy-text h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #cccccc;
+      margin: 1rem 0;
+    }
+
+    .philosophy-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #b0b0b0;
+      margin: 1rem 0;
+    }
+
+    .philosophy-image {
+      position: relative;
+      width: 40%;
+      height: 400px;
+    }
+
+    .earth, .moon {
+      position: absolute;
+      border-radius: 50%;
+      animation: rotate 20s linear infinite;
+    }
+
+    .earth {
+      width: 300px;
+      height: 300px;
+      top: 0;
+      right: 0;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg') no-repeat center;
+      background-size: cover;
+    }
+
+/* ...existing code... */
+.moon {
+  width: 150px;
+  height: 150px;
+  top: 0;                /* Move to top */
+  right: 0;              /* Move to right */
+  left: auto;
+  bottom: auto;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/600px-FullMoon2010.jpg') no-repeat center;
+  background-size: cover;
+  box-shadow: 0 0 60px 20px rgba(255,255,210,0.25), /* subtle glow */
+              0 0 120px 40px rgba(255,255,210,0.10); /* wider scatter */
+  filter: blur(0.2px);
+  z-index: 2;
+  animation: rotate 30s linear infinite reverse;
+}
+
+/* Add a mask to simulate scattered glow (shadowed side) */
+.moon::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  /* Mask the left side to look like the glow is scattered only on the right */
+  background: radial-gradient(ellipse at 80% 40%, rgba(255,255,210,0.25) 40%, transparent 70%),
+              linear-gradient(to left, transparent 60%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+/* ...existing code... */
+
+    .earth::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 80%,
+        rgba(0, 0, 0, 0.7) 100%
+      );
+      animation: nightEffect 20s linear infinite;
+    }
+
+    .philosophy-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .philosophy-buttons button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      border: 2px solid #ffffff;
+      background: transparent;
+      color: #ffffff;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .philosophy-buttons button:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes nightEffect {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .logo {
+        font-size: 1.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(30, 29, 29, 0.9);
+        position: absolute;
+        top: 12vh;
+        left: 0;
+        width: 100%;
+        padding: 2vh 0;
+      }
+
+      .navbar .nav-links.active {
+        display: flex;
+      }
+
+      .navbar .nav-links li {
+        margin: 1vh 0;
+        text-align: center;
+      }
+
+      .navbar .nav-links li a {
+        font-size: 1.2rem;
+      }
+
+      .container img {
+        position: static;
+        width: 90vw;
+        max-height: 500px;
+        margin: 2vh auto;
+        display: block;
+      }
+
+      .cont {
+        left: 0;
+        text-align: center;
+        top: 2vh;
+        font-size: 2.5rem;
+      }
+
+      .intro {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .about-text {
+        font-size: 2rem;
+      }
+      
+      .philosophy-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .philosophy-text {
+        max-width: 100%;
+      }
+
+      .philosophy-text h2 {
+        font-size: 3rem;
+      }
+
+      .philosophy-text h3 {
+        font-size: 1.2rem;
+      }
+
+      .philosophy-image {
+        width: 80%;
+        height: 300px;
+        margin-top: 2rem;
+      }
+
+      .earth {
+        width: 200px;
+        height: 200px;
+      }
+
+      .moon {
+        width: 100px;
+        height: 100px;
+        right: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Sanjay Daud Sharon</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Certifications</a></li>
+      <li><a href="#">Internships</a></li>
+      <li><a href="#">Education</a></li>
+      <li><a href="#">Project</a></li>
+      <li><a href="#">Contact us</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </nav>
+
+  <!-- 1st Page Section -->
+  <section class="intro">
+    <div class="introduction">
+      <div class="container">
+        <img src="images/WhatsApp_Image_2025-05-18_at_1.21.21_PM-removebg-preview.png" alt="Web Designer Image">
+      </div>
+      <div class="cont">
+        <h2>I AM</h2>
+        <h1>WEB DESIGNER</h1>
+        <h2>TO HIRE</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2nd Page Section -->
+  <section class="about">
+    <div class="about-text"></div>
+  </section>
+  <!-- 3rd Page Section (Philosophy) -->
+  <section class="philosophy">
+    <div class="stars-layer-1"></div>
+    <div class="stars-layer-2"></div>
+    <div class="stars-layer-3"></div>
+    <div class="philosophy-content">
+      <div class="philosophy-text">
+        <h2>ABOUT</h2>
+        <h3>INTUITIVE APPROACH | FUTURE-FOCUSED STRATEGY | UNCOMPROMISING DISCIPLINE</h3>
+        <p>
+          ANYONE CAN CREATE. SOME HAVE THE TALENT TO DESIGN. BUT WHO CAN CAPTURE AND TRANSLATE YOUR VISION INTO A LASTING LEGACY?<br><br>
+          TRUE DESIGN IS MORE THAN AESTHETICS; WE BELIEVE IN A COMPLETE EXTENSION OF YOUR BRAND - A SEAMLESS BLEND OF VISUAL IDENTITY, YOUR STORY AND MESSAGING, YOUR GOALS AND STRATEGY WORKING TOGETHER TO CREATE A POWERFUL DIGITAL EXPERIENCE. IT’S NOT A SEPARATE PIECE - IT’S YOUR BRAND IN ACTION.
+        </p>
+        <div class="philosophy-buttons">
+          <button>PLAN A CALL</button>
+          <button>EXPLORE</button>
+        </div>
+      </div>
+      <div class="philosophy-image">
+        <div class="earth"></div>
+        <div class="moon"></div>
+      </div>
+    </div>
+  </section>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Typing animation for about-text
+    const aboutTextElement = document.querySelector('.about-text');
+    const text = 'Impactful design  is the design that works!';
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        aboutTextElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeText, 100); // Adjust typing speed (100ms per character)
+      } else {
+        setTimeout(() => {
+          aboutTextElement.textContent = ''; // Clear text
+          index = 0; // Reset index
+          typeText(); // Restart animation
+        }, 2000); // Pause for 2 seconds before restarting
+      }
+    }
+
+    // Start typing animation when the section is in view
+    window.addEventListener('load', () => {
+      const aboutSection = document.querySelector('.about');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            typeText();
+            observer.disconnect(); // Stop observing once animation starts
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(aboutSection);
+    });
+
+
+    // ...existing code...
+
+  // Generate random stars for each layer
+  function createStars(layerSelector, count, sizeMin, sizeMax, durationMin, durationMax) {
+    const layer = document.querySelector(layerSelector);
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * (sizeMax - sizeMin) + sizeMin;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.opacity = Math.random() * 0.7 + 0.3;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      star.style.animationDuration = `${Math.random() * (durationMax - durationMin) + durationMin}s`;
+      layer.appendChild(star);
+    }
+  }
+
+  // More stars for realism
+  createStars('.stars-layer-1', 40, 2, 3, 1.5, 2.5);
+  createStars('.stars-layer-2', 60, 1, 2, 2, 3.5);
+  createStars('.stars-layer-3', 80, 0.5, 1.2, 2.5, 4);
+  </script>
+</body>
+</html>

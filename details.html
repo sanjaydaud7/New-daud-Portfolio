@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internship Details</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      background-color: rgb(91, 79, 79);
+    }
+    .offer-letter {
+  margin-top: 1.5rem;
+}
+
+    .details-container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    h3, h4 {
+      margin: 0.5rem 0;
+    }
+    .internship-meta, .intern-desc, .tech-used, .outcomes, .certificates, .visuals {
+      margin-top: 1.5rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .badge-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .badge-link:hover {
+      background: #0056b3;
+    }
+    img.logo {
+      max-height: 60px;
+      margin-top: 1rem;
+    }
+    .screenshots img {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="details-container">
+      <h1 id="intern-title">Loading...</h1>
+      <h3 id="company-name"></h3>
+      <div class="internship-meta">
+        <p><strong>Location:</strong> <span id="location"></span></p>
+        <p><strong>Type:</strong> Internship</p>
+        <p><strong>Duration:</strong> <span id="intern-date"></span></p>
+      </div>
+
+      <div class="intern-desc">
+        <h4>Description of Work</h4>
+        <ul id="description-list"></ul>
+      </div>
+
+      <div class="tech-used">
+        <h4>Technologies / Skills Used</h4>
+        <p id="tech-used"></p>
+      </div>
+
+      <div class="outcomes">
+        <h4>Achievements / Outcomes</h4>
+        <p id="outcomes"></p>
+      </div>
+
+      <div class="offer-letter">
+        <h4>Internship Offer Letter</h4>
+        <a href="#" id="offer-letter-link" target="_blank"
+          class="badge-link">View Offer Letter</a>
+      </div>
+
+      <div class="certificates">
+        <h4>Certificate / Letter of Completion</h4>
+        <a href="#" id="certificate-link" target="_blank"
+          class="badge-link">View Certificate</a>
+      </div>
+
+      <div class="visuals">
+        <h4>Visuals</h4>
+        <img src="#" id="company-logo" alt="Company Logo" class="logo" />
+        <div id="screenshots-container"></div>
+
+      </div>
+    </div>
+
+    <script>
+   const internships = [
+  {
+    title: "Web Development Intern",
+    company: "@ Codtech IT Solutions Pvt Ltd",
+    location: "Remote",
+    date: "12 July 2024 - 12 September 2024",
+    type: "Internship",
+    description: [
+      "Developed responsive UI components using HTML, CSS, JavaScript, and React.",
+      "Collaborated with backend developers to integrate RESTful APIs.",
+      "Optimized frontend performance for better loading and interaction.",
+      "Participated in Agile sprints and team reviews."
+    ],
+    tech: "HTML, CSS, JavaScript, React, REST API, Git, GitHub",
+    outcomes: "Successfully delivered 3 fully responsive pages for client projects; improved UI load time by 25%.",
+    certificate: "images/codtech completion certificate.pdf",
+    offerLetter: "images/codtech Internship Offer Letter.pdf",
+    logo: "images/cod visuals.png",
+    screenshot: [
+  "images/weather-pro.png",
+  "images/to-do-list.png"
+]
+
+  },
+  {
+    title: "Altair Data Science Master Intern",
+    company: "@ Eduskills",
+    location: "Remote",
+    date: "08 April 2024 - 15 June 2024",
+    type: "Internship",
+    description: [
+      "Cleaned and processed raw datasets for analysis using Python.",
+      "Built visual dashboards and plots with Matplotlib and Seaborn.",
+      "Applied ML algorithms for predictive modeling on structured data.",
+      "Completed hands-on labs for real-world business data scenarios."
+    ],
+    tech: "Python, Pandas, Matplotlib, Seaborn, Scikit-learn, Excel",
+    outcomes: "Completed 5 data projects including customer segmentation and churn prediction; improved data interpretation accuracy.",
+    certificate: "https://example.com/certificates/eduskills.pdf",
+    offerLetter: "https://example.com/offerletters/eduskills-offer.pdf",
+    logo: "https://example.com/logos/eduskills.png",
+    screenshot: "https://example.com/screenshots/eduskills-dashboard.png"
+  },
+  {
+    title: "Web Development Intern",
+    company: "@ CodeCraft Technologies",
+    location: "Remote",
+    date: "April 2024 - June 2024",
+    type: "Internship",
+    description: [
+      "Built reusable components in React for product and landing pages.",
+      "Worked with RESTful APIs to display dynamic data.",
+      "Managed source control using Git and participated in code reviews.",
+      "Enhanced mobile responsiveness and accessibility of websites."
+    ],
+    tech: "HTML, CSS, JavaScript, React, Git, GitHub, REST APIs",
+    outcomes: "Improved UI consistency and code modularity; contributed to 2 successful product rollouts.",
+    certificate: "https://example.com/certificates/codecraft.pdf",
+    offerLetter: "https://example.com/offerletters/codecraft-offer.pdf",
+    logo: "https://example.com/logos/codecraft.png",
+    screenshot: "https://example.com/screenshots/codecraft-ui.png"
+  }
+];
+
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+
+    if (!isNaN(id) && internships[id]) {
+      const data = internships[id];
+      document.getElementById("intern-title").textContent = data.title;
+      document.getElementById("company-name").textContent = data.company;
+      document.getElementById("location").textContent = data.location;
+      document.getElementById("intern-date").textContent = data.date;
+
+      const descList = document.getElementById("description-list");
+      data.description.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        descList.appendChild(li);
+      });
+
+      document.getElementById("tech-used").textContent = data.tech;
+      document.getElementById("outcomes").textContent = data.outcomes;
+      document.getElementById("certificate-link").href = data.certificate;
+      document.getElementById("company-logo").src = data.logo;
+      const screenshotContainer = document.getElementById("screenshots-container");
+screenshotContainer.innerHTML = ""; // Clear existing screenshots
+data.screenshot.forEach((src) => {
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = "Internship Screenshot";
+  img.style.width = "100%";
+  img.style.maxWidth = "400px";
+  img.style.margin = "5px";
+  screenshotContainer.appendChild(img);
+});
+
+      document.getElementById("offer-letter-link").href = data.offerLetter;
+
+    } else {
+      document.querySelector(".details-container").innerHTML = "<h2>Internship Not Found</h2>";
+    }
+  </script>
+  </body>
+</html>

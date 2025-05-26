@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interships</title>
+       <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <section class="internships-section">
+  <h1>Internships</h1>
+  <p class="internship-description">
+    Here are some of the internships I've completed to enhance my practical experience in tech and analytics.
+  </p>
+
+<div class="internship-cards-container">
+          <div class="internship-cards-container">
+                <div class="internship-card">
+                    <h2>Web Development Intern</h2>
+                    <h4>@Codtech IT soultion Pvt Ltd</h4>
+                    <p>Developed responsive front-end using HTML, CSS,
+                        JavaScript and React. Collaborated on REST API
+                        integration.</p>
+                    <span class="intern-date">July 2024 - August 2024</span>
+                    <button class="view-details-btn">View Details</button>
+
+                </div>
+
+                <div class="internship-card">
+                    <h2>Altair Data Science Master Intern</h2>
+                    <h4>@ Eduskills intern </h4>
+                    <p>Explored real-world applications of data science, working
+                        on data analysis, visualization, and predictive modeling
+                        using Python, Excel, and data interpretation tools.</p>
+
+                    <span class="intern-date">Apr 2024 - Jun 2024</span>
+                    <button class="view-details-btn">View Details</button>
+
+                </div>
+                <div class="internship-card">
+                    <h2>Development Intern</h2>
+                    <h4>@ CodeCraft Technologies</h4>
+                    <p>Developed responsive front-end using HTML, CSS,
+                        JavaScript and React. Collaborated on REST API
+                        integration.</p>
+                    <span class="intern-date">Apr 2024 - Jun 2024</span>
+                    <button class="view-details-btn">View Details</button>
+
+                </div>
+
+            </div>
+
+  </div>
+</section>
+
+  <script >// internship page started
+
+// internship.js
+document.querySelectorAll('.view-details-btn').forEach((button, index) => {
+    button.addEventListener('click', () => {
+        const internshipId = index; // 0, 1, 2, etc. for now
+        window.location.href = `details.html?id=${internshipId}`;
+    });
+});</script>
+</body>
+</html>
